@@ -1,0 +1,30 @@
+{
+    "name": "strapi-nextjs",
+    "version": "1.0.0",
+    "description": "Next.js powered by Strapi",
+    "type": "module",
+    "scripts": {
+        "frontend": "npm run dev --prefix ../frontend/",
+        "backend": "npm run dev --prefix ../backend/",
+        "clear": "cd frontend && rm -rf .next && rm -rf cache",
+        "setup:frontend": "cd frontend && npm install",
+        "setup:backend": "cd backend && npm install",
+        "setup": "npm run install && npm run setup:frontend && npm run setup:backend",
+        "dev": "npm run clear && concurrently \"cd frontend && npm run dev\" \"cd backend && npm run develop\"",
+        "seed": "cd backend && npm run strapi import -f ../seed-data.tar.gz",
+        "export": "cd backend && npm run strapi export --no-encrypt -f ../seed-data",
+        "repo:upstream": "git fetch upstream && git merge upstream/main"
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2",
+        "npm-check-updates": "^16.14.15"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
+            "npm run fix:format"
+        ],
+        "next/**/*.{js,jsx,ts,tsx}": [
+            "cd next && npm run lint --fix"
+        ]
+    }
+}

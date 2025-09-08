@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "childs",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page"
+    "singularName": "child",
+    "pluralName": "childs",
+    "displayName": "Child"
   },
   "options": {
     "draftAndPublish": true
@@ -12,14 +12,19 @@
   "pluginOptions": {},
   "attributes": {
     "slug": {
-      "type": "uid",
-      "targetField": "heading"
+      "type": "uid"
     },
     "heading": {
       "type": "string"
     },
     "description": {
       "type": "text"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::parent.parent",
+      "inversedBy": "children"
     },
     "blocks": {
       "type": "dynamiczone",
@@ -28,12 +33,6 @@
         "blocks.info",
         "blocks.hero-section"
       ]
-    },
-    "parents": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::parent.parent",
-      "mappedBy": "page"
     }
   }
 }

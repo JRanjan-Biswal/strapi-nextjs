@@ -19,8 +19,6 @@ export default async function DynamicPage(
 
     const data = await fetchData(slug);
 
-    console.log("DynamicPage data:", data);
-
     return (
         <div className="min-h-screen">
             <BlockGenerator blocks={data.blocks} />

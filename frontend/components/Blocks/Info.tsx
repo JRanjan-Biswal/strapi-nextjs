@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { StrapiImageVideo } from "../Layout/StrapiImageVideo";
 
 export default function InfoBlock(block: any) {
-    console.log("Rendering InfoBlock:", block);
     return (
         <div className={`info-block p-8 bg-gray-100 rounded-lg shadow-md flex gap-10 ${block.isReverse ? "flex-row-reverse" : "flex-row"}`}>
             <div className="w-1/2 flex items-center justify-center">
